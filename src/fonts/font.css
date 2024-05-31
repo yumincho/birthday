@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "MilkAndHoney";
+  font-display: fallback;
+
+  src: url("./Milk-And-Honey.otf") format("opentype");
+
+  font-weight: 400;
+  font-style: normal;
+}
