@@ -17,7 +17,7 @@ function getThisYearsBirthday(birthdayStr: string) {
 }
 
 const CelebrationPage = () => {
-  const { id, name, birthday, buttonLabel, confettis } =
+  const { id, name, birthday, confettis, buttonLabel, celebrationCount } =
     useLoaderData() as Birthdayer;
 
   const thisYearsBirthday = getThisYearsBirthday(birthday);
@@ -50,12 +50,12 @@ const CelebrationPage = () => {
           {thisYearsBirthday}
         </span>
       </div>
-      <span
-        style={{
-          fontSize: "24px",
-        }}
-      ></span>
-      <ConfettiButton id={id} buttonLabel={buttonLabel} confettis={confettis} />
+      <ConfettiButton
+        id={id}
+        buttonLabel={buttonLabel}
+        confettis={confettis}
+        celebrationCount={celebrationCount}
+      />
     </div>
   );
 };

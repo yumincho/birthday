@@ -6,8 +6,9 @@ export interface Birthdayer {
   id: string;
   name: string;
   birthday: string;
+  confettis: string;
   buttonLabel: string;
-  confettis: number;
+  celebrationCount: number;
 }
 
 export const getBirthdayer = async (id: string) =>
@@ -15,5 +16,5 @@ export const getBirthdayer = async (id: string) =>
 
 export const addConfetti = async (id: string) =>
   await pb.collection("birthdayer").update(id, {
-    "confettis+": 1,
+    "celebrationCount+": 1,
   });

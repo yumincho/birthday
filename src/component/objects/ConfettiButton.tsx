@@ -2,26 +2,39 @@ import { addConfetti } from "@/api/api";
 import JSConfetti from "js-confetti";
 import { useEffect, useState } from "react";
 import Odometer from "react-odometerjs";
+import emojiRegex from "emoji-regex";
+
+const parseEmojis = (emojiString: string): string[] => {
+  const regex = emojiRegex();
+  const emojis = [];
+  let match;
+  while ((match = regex.exec(emojiString)) !== null) {
+    emojis.push(match[0]);
+  }
+  return emojis;
+};
 
 const ConfettiButton = ({
   id,
   buttonLabel,
   confettis,
+  celebrationCount,
 }: {
   id: string;
   buttonLabel: string;
-  confettis: number;
+  confettis: string;
+  celebrationCount: number;
 }) => {
   const [confettiCount, setConfettiCount] = useState(0);
 
   useEffect(() => {
-    setConfettiCount(confettis);
-  }, [confettis]);
+    setConfettiCount(celebrationCount);
+  }, [celebrationCount]);
 
   const jsConfetti = new JSConfetti();
   const handleClick = () => {
     jsConfetti.addConfetti({
-      emojis: ["🎉", "🎊", "🎈", "❤️", "💕"],
+      emojis: parseEmojis(confettis),
       emojiSize: 100,
       confettiNumber: 25,
     });
