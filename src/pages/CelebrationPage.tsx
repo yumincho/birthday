@@ -6,7 +6,7 @@ import { Birthdayer } from "@/api/api";
 function getThisYearsBirthday(birthdayStr: string) {
   const birthday = new Date(birthdayStr);
   birthday.setFullYear(new Date().getFullYear());
-  birthday.setHours(birthday.getHours() - 9);
+  birthday.setHours(birthday.getHours());
 
   const date = new Intl.DateTimeFormat("ko-KR").format(birthday);
   const weekday = new Intl.DateTimeFormat("en-En", {
