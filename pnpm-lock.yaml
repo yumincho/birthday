@@ -20,6 +20,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.3.1(react@18.3.1)
+  react-icons:
+    specifier: ^5.2.1
+    version: 5.2.1(react@18.3.1)
   react-input-emoji:
     specifier: ^5.9.0
     version: 5.9.0(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
@@ -1867,6 +1870,14 @@ packages:
       '@types/react': 18.3.3
       react: 18.3.1
       string-replace-to-array: 2.1.1
+    dev: false
+
+  /react-icons@5.2.1(react@18.3.1):
+    resolution: {integrity: sha512-zdbW5GstTzXaVKvGSyTaBalt7HSfuK5ovrzlpyiWHAFXndXTdd/1hdDHI4xBM1Mn7YriT6aqESucFl9kEXzrdw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.3.1
     dev: false
 
   /react-input-emoji@5.9.0(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1):

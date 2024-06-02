@@ -58,6 +58,9 @@ const CreatePage = () => {
         <button type="submit" className="createButton">
           Create
         </button>
+        <a href="/search" style={{ marginTop: "0.8rem" }}>
+          Want to search existing links?
+        </a>
       </form>
     </div>
   );

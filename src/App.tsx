@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CelebrationPage from "./pages/CelebrationPage";
 import { getBirthdayer } from "./api/api";
 import CreatePage from "./pages/CreatePage";
+import SearchPage from "./pages/SearchPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
           // TODO: validate id
           return getBirthdayer(id!);
         },
+      },
+      {
+        path: "/search",
+        element: <SearchPage />,
       },
     ],
   },

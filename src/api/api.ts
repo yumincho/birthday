@@ -47,3 +47,11 @@ export const addConfetti = async (id: string) =>
   await pb.collection("birthdayer").update(id, {
     "celebrationCount+": 1,
   });
+
+export const findBirthdayer = async (name: string, birthday: Date) =>
+  await pb.collection("birthdayer").getFullList<SearchResult>({
+    filter: pb.filter("name = {:name} && (birthday = {:birthday})", {
+      name,
+      birthday,
+    }),
+  });
