@@ -6,7 +6,6 @@ import { Birthdayer } from "@/api/api";
 function getThisYearsBirthday(birthdayStr: string) {
   const birthday = new Date(birthdayStr);
   birthday.setFullYear(new Date().getFullYear());
-  birthday.setHours(birthday.getHours());
 
   const date = new Intl.DateTimeFormat("ko-KR").format(birthday);
   const weekday = new Intl.DateTimeFormat("en-En", {
@@ -25,17 +24,7 @@ const CelebrationPage = () => {
     new Date().getFullYear() - new Date(birthday).getFullYear();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "36px",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100vw",
-        height: "600px",
-      }}
-    >
+    <div className="pageLayout">
       <Canvas3D />
       <div
         style={{

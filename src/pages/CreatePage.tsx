@@ -1,12 +1,10 @@
 import { createBirthdayer } from "@/api/api";
-import "./form.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import InputEmoji from "react-input-emoji";
 
 const CreatePage = () => {
   const [emojis, setEmojis] = useState<string>("");
-  // const [startDate, setStartDate] = useState<Date>();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -15,21 +13,26 @@ const CreatePage = () => {
     const name = formData.get("name") as string;
     const birthday = new Date(formData.get("birthday") as string);
 
-    const { id } = await createBirthdayer({
+    const res = await createBirthdayer({
       name,
       birthday,
       confettis: emojis,
     });
-    navigate(`/${id}`);
+
+    if (res.type == "error") {
+      alert(res.message);
+      return;
+    }
+
+    navigate(`/${res.id}`);
   };
 
   return (
-    <div className="createPageLayout">
+    <div className="pageLayout">
       <div className="title">
         <span>Happy Birthday</span>
         <span>From Everywhere</span>
       </div>
-
       <form onSubmit={handleSubmit}>
         <label>
           Displayed Name

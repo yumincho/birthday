@@ -11,20 +11,34 @@ export interface Birthdayer {
   celebrationCount: number;
 }
 
-export interface NewBirthdayer
-  extends Omit<
-    Birthdayer,
-    "id" | "birthday" | "buttonLabel" | "celebrationCount"
-  > {
+interface NewBirthdayer {
+  name: string;
   birthday: Date;
+  confettis: string;
 }
 
-export const createBirthdayer = async (data: NewBirthdayer) =>
-  await pb.collection("birthdayer").create({
-    ...data,
-    buttonLabel: "나도 축하해주기 🥳",
-    celebrationCount: 0,
-  });
+export interface SearchResult {
+  id: string;
+}
+
+export const createBirthdayer = async (data: NewBirthdayer) => {
+  try {
+    const res = await pb.collection("birthdayer").create({
+      ...data,
+      buttonLabel: "나도 축하해주기 🥳",
+      celebrationCount: 0,
+    });
+    return {
+      type: "success",
+      id: res.id,
+    };
+  } catch {
+    return {
+      type: "error",
+      message: "이미 존재하는 이름입니다.",
+    };
+  }
+};
 
 export const getBirthdayer = async (id: string) =>
   await pb.collection("birthdayer").getOne<Birthdayer>(id);
