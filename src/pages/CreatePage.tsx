@@ -2,6 +2,7 @@ import { createBirthdayer } from "@/api/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import InputEmoji from "react-input-emoji";
+import { TypeAnimation } from "react-type-animation";
 
 const CreatePage = () => {
   const [emojis, setEmojis] = useState<string>("");
@@ -30,8 +31,20 @@ const CreatePage = () => {
   return (
     <div className="pageLayout">
       <div className="title" style={{ marginTop: "2rem" }}>
-        <span>Happy Birthday</span>
-        <span>From Everywhere</span>
+        <span>HBD to You</span>
+        <TypeAnimation
+          className="typeAnimation"
+          sequence={[
+            "from friends 🙌",
+            1500,
+            "from loved ones 💑",
+            1500,
+            "from all of us! 🌍",
+            1500,
+          ]}
+          speed={1}
+          repeat={Infinity}
+        />
       </div>
       <form onSubmit={handleSubmit}>
         <label>
