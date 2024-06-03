@@ -1,7 +1,4 @@
 #root {
-  /* max-width: 1280px;
-  margin: 0 auto; */
-  /* padding: 2rem; */
   text-align: center;
 }
 
@@ -45,8 +42,26 @@
   display: flex;
   flex-direction: column;
   gap: 3.6rem;
-  justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 600px;
+  margin: 2rem 0;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  font-family: "MilkAndHoney";
+  font-size: 2rem;
+}
+
+.styledButton {
+  margin-top: 2.4rem;
+  font-family: "MilkAndHoney";
+  font-size: 1.2rem;
+}
+
+.tip {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: #888888;
 }

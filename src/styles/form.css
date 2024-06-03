@@ -25,19 +25,6 @@ input {
   font-size: 0.8rem;
 }
 
-.createButton {
-  margin-top: 1.2rem;
-  font-family: "MilkAndHoney";
-  font-size: 1.2rem;
-}
-
-.title {
-  display: flex;
-  flex-direction: column;
-  font-family: "MilkAndHoney";
-  font-size: 2rem;
-}
-
 /* react-input-emoji library customization */
 
 .react-emoji {

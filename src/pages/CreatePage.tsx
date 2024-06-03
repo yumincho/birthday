@@ -29,7 +29,7 @@ const CreatePage = () => {
 
   return (
     <div className="pageLayout">
-      <div className="title">
+      <div className="title" style={{ marginTop: "2rem" }}>
         <span>Happy Birthday</span>
         <span>From Everywhere</span>
       </div>
@@ -55,7 +55,7 @@ const CreatePage = () => {
             shouldConvertEmojiToImage={false}
           />
         </label>
-        <button type="submit" className="createButton">
+        <button type="submit" className="styledButton">
           Create
         </button>
         <a href="/search" style={{ marginTop: "0.8rem" }}>

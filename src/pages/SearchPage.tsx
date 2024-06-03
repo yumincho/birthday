@@ -1,19 +1,25 @@
-import { SearchResult, findBirthdayer } from "@/api/api";
-import { useState } from "react";
+import { findBirthdayer } from "@/api/api";
 import { useNavigate } from "react-router-dom";
 import { FiChevronLeft } from "react-icons/fi";
 
 const SearchPage = () => {
-  const [result, setResult] = useState<SearchResult[]>([]);
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const formData = new FormData(event.currentTarget);
     const name = formData.get("name") as string;
     const birthday = new Date(formData.get("birthday") as string);
 
-    setResult(await findBirthdayer(name, birthday));
+    const res = await findBirthdayer(name, birthday);
+
+    if (res.length === 0) {
+      alert("검색 결과가 없습니다.");
+      return;
+    } else {
+      navigate(`/${res[0].id}`);
+    }
   };
 
   return (
@@ -45,17 +51,13 @@ const SearchPage = () => {
           Birthday
           <input type="date" name="birthday" required />
         </label>
-        <button type="submit" className="searchButton">
+        <button type="submit" className="styledButton">
           Search
         </button>
+        <span className="tip">
+          검색 결과가 존재하면 바로 링크로 이동합니다.
+        </span>
       </form>
-      <div>
-        {result.map(({ id }) => (
-          <button key={id} onClick={() => navigate(`/${id}`)}>
-            {id}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };
